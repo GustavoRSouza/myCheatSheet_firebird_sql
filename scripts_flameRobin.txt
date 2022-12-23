@@ -26,6 +26,21 @@ create table cliente(
 
 );
 
+
+-- PRIMARY KEYS
+alter table grupo_produtos
+add constraint pk_codigo_grupo_produtos
+primary key (codigo);
+
+alter table produtos
+add constraint pk_codigo_produtos
+primary key (codigo);
+
+alter table cliente
+add constraint pk_codigo_cliente
+primary key (codigo);
+
+
 -- INSERIR DADOS NAS TABELAS
 insert into grupo_produtos (codigo, descricao) values (1,'padaria');
 insert into grupo_produtos (codigo, descricao) values (2,'acougue');
