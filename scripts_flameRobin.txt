@@ -1,0 +1,35 @@
+-- DOMINIOS
+create domain "DM_CODIGO" Integer not null;
+create domain "DM_DESCRICAO" Varchar(40);
+create domain "DM_NOME" Varchar(40);
+create domain "DM_QTDE" Numeric(8,3);
+create domain "DMVALOR" Numeric(8,2);
+
+
+-- CRIAR TABELAS COM DOMINIOS COMO ATRIBUTOS
+create table grupo_produtos(
+    codigo DM_CODIGO,
+    descricao DM_DESCRICAO
+);
+
+create table produtos(
+    codigo DM_CODIGO,
+    descricao DM_DESCRICAO,
+    valor DM_VALOR,
+    cod_grupo_produtos integer
+);
+
+-- INSERIR DADOS NAS TABELAS
+insert into grupo_produtos (codigo, descricao) values (1,'padaria');
+insert into grupo_produtos (codigo, descricao) values (2,'acougue');
+insert into grupo_produtos (codigo, descricao) values (3,'hortifruti');
+
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (1,'picanha',54.50,3);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (2,'bolo de fuba',6.80,1);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (3,'cenoura',4.35,3);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (4,'pao frances',5.00,1);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (5,'frango congelado',11.20,2);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (6,'alcatra',16.50,2);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (7,'pepino',3.76,3);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (8,'alho',12,3);
+insert into produtos (codigo, descricao, valor, cod_grupo_produtos) values (9,'bomba de chocolate',1.80,1);
