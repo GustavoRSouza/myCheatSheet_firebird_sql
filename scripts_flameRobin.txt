@@ -23,7 +23,6 @@ create table cliente(
 	codigo DM_CODIGO,
 	nome DM_NOME,
 	data_nascimento date
-
 );
 
 create table pedido(
@@ -54,10 +53,18 @@ alter table cliente
 add constraint pk_codigo_cliente
 primary key (codigo);
 
+
 -- CHAVE COMPOSTA
 alter table item_pedido
 add constraint pk_codigo_pedido_item
 primary key (codigo, item);
+
+
+-- FOREIGN KEY
+alter table produtos
+add constraint fk_cod_grupo_produto
+foreign key (cod_grupo_produtos)
+references grupo_produtos(codigo);
 
 
 
