@@ -19,6 +19,13 @@ create table produtos(
     cod_grupo_produtos integer
 );
 
+create table cliente(
+	codigo DM_CODIGO,
+	nome DM_NOME,
+	data_nascimento date
+
+);
+
 -- INSERIR DADOS NAS TABELAS
 insert into grupo_produtos (codigo, descricao) values (1,'padaria');
 insert into grupo_produtos (codigo, descricao) values (2,'acougue');
