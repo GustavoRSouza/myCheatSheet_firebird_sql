@@ -156,3 +156,18 @@ where cliente.nome like '%an%';
 	Texto% - Retorna todos os valores que completam a consulta DEPOIS do %
 	%Texto% - Retorna todos os valores que completam a consulta ENTRE do %
 */
+
+
+-- UPDATE
+update produtos
+set produtos.valor = 5.56
+where produtos.codigo = 3;
+
+update produtos
+set produtos.descricao = 'Pão Italiano'
+where produtos.codigo = 4;
+
+update produtos 
+set produtos.descricao = 'frango resfriado',
+produtos.valor = 12.87
+where produtos.codigo = 5;
