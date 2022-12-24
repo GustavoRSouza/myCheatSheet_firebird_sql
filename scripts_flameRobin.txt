@@ -91,3 +91,18 @@ insert into item_pedido (codigo, item, cod_produto, quantidade) values (1, 2, 2,
 insert into item_pedido (codigo, item, cod_produto, quantidade) values (1, 3, 2, 12);
 insert into item_pedido (codigo, item, cod_produto, quantidade) values (2, 1, 2, 12);
 insert into item_pedido (codigo, item, cod_produto, quantidade) values (2, 2, 2, 12);
+
+insert into cliente (codigo, nome, data_nascimento) values (1, 'Daniel', '08/03/1975');
+insert into cliente (codigo, nome, data_nascimento) values (2, 'Luciano', '06/03/1999');
+insert into cliente (codigo, nome, data_nascimento) values (3, 'Jose', '08/12/1975');
+insert into cliente (codigo, nome, data_nascimento) values (4, 'Alexandre', '03/12/1998');
+insert into cliente (codigo, nome, data_nascimento) values (5, 'Marcelo', '05/08/1965');
+insert into cliente (codigo, nome, data_nascimento) values (6, 'Antonio', '05/05/1978');
+insert into cliente (codigo, nome, data_nascimento) values (7, 'Joao', '07/08/1975');
+insert into cliente (codigo, nome, data_nascimento) values (8, 'Danilo', '08/06/1993');
+insert into cliente (codigo, nome, data_nascimento) values (9, 'Luciana', '09/05/1999');
+insert into cliente (codigo, nome, data_nascimento) values (10, 'Joseane', '11/06/1965');
+insert into cliente (codigo, nome, data_nascimento) values (11, 'Alex', '03/03/1998');
+insert into cliente (codigo, nome, data_nascimento) values (12, 'Marcela', '05/08/1969');
+insert into cliente (codigo, nome, data_nascimento) values (13, 'Antonieta', '05/05/1988');
+insert into cliente (codigo, nome, data_nascimento) values (14, 'Joana', '10/08/1995');
