@@ -106,3 +106,53 @@ insert into cliente (codigo, nome, data_nascimento) values (11, 'Alex', '03/03/1
 insert into cliente (codigo, nome, data_nascimento) values (12, 'Marcela', '05/08/1969');
 insert into cliente (codigo, nome, data_nascimento) values (13, 'Antonieta', '05/05/1988');
 insert into cliente (codigo, nome, data_nascimento) values (14, 'Joana', '10/08/1995');
+
+
+-- SELECT
+select * from cliente; -- * seleciona todos os campos
+select cliente.nome from cliente;
+select cliete.nome, cliente.data_nascimento from cliente;
+select * from grupo_produtos, produtos; -- seleciona os produtos correspondentes aos grupos incorretamente
+
+select * from grupo_produtos, produtos
+where grupo_produtos.codigo = produtos.cod_grupo_produtos; -- seleciona os produtos correspondentes aos grupos corretamente
+
+select * from produtos
+where produtos.codigo >= 1
+and produtos.codigo <= 5;
+
+select * from cliente
+where cliente.nome like '%se';
+
+select * from cliente
+where cliente.nome like 'Jo%';
+
+select * from cliente
+where cliente.nome like '%an%';
+
+/* 
+    ----------------------------  
+	OPERADORES DE COMPARAÇÃO:
+    ----------------------------
+	<> - Diferente
+	=  - Igual
+	>  - Maior
+	<  - Menor
+	>= - Maior ou Igual
+	<= - Menor ou Igual
+
+
+    ----------------------------  
+	OPERADORES LÓGICOS:
+    ----------------------------
+	AND - Se todas as condições forem TRUE
+	OR  - Se pelo menos uma das condições forem TRUE
+
+
+    ----------------------------  
+	MASCARAS DO LIKE:
+    ----------------------------
+	%Texto - Retorna todos os valores que completam a consulta ANTES do %
+	Texto% - Retorna todos os valores que completam a consulta DEPOIS do %
+	%Texto% - Retorna todos os valores que completam a consulta ENTRE do %
+*/
