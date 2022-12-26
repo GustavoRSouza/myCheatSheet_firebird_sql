@@ -171,3 +171,13 @@ update produtos
 set produtos.descricao = 'frango resfriado',
 produtos.valor = 12.87
 where produtos.codigo = 5;
+
+
+-- DELETE
+delete from cliente
+where cliente.nome like '%an%';
+
+delete from cliente
+where data_nascimento >= '01/01/1999';
+
+delete from produtos;
