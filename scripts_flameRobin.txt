@@ -181,3 +181,21 @@ delete from cliente
 where data_nascimento >= '01/01/1999';
 
 delete from produtos;
+
+
+-- ORDER BY
+select * from cliente
+order by cliente.data_nascimento;
+
+select * from cliente
+order by cliente.NOME, cliente.data_nascimento;
+
+select * from grupo_produtos, produtos
+where grupo_produtos.codigo = produtos.cod_grupo_produtos
+order by grupo_produtos.descricao, produtos.descricao;
+
+select * from produtos
+order by produtos.valor desc; -- ordena o valor de maneira decrescente (> para o <)
+
+select * from produtos
+order by produtos.valor asc; -- ordena o valor de maneira crescente (< para o >)
