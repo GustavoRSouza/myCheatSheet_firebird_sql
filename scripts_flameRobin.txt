@@ -6,6 +6,7 @@ create domain "DM_QTDE" Numeric(8,3);
 create domain "DMVALOR" Numeric(8,2);
 
 
+
 -- CRIAR TABELAS COM DOMINIOS COMO ATRIBUTOS
 create table grupo_produtos(
     codigo DM_CODIGO,
@@ -40,6 +41,7 @@ create table item_pedido(
 );
 
 
+
 -- PRIMARY KEYS
 alter table grupo_produtos
 add constraint pk_codigo_grupo_produtos
@@ -54,10 +56,12 @@ add constraint pk_codigo_cliente
 primary key (codigo);
 
 
+
 -- CHAVE COMPOSTA
 alter table item_pedido
 add constraint pk_codigo_pedido_item
 primary key (codigo, item);
+
 
 
 -- FOREIGN KEY
@@ -106,6 +110,7 @@ insert into cliente (codigo, nome, data_nascimento) values (11, 'Alex', '03/03/1
 insert into cliente (codigo, nome, data_nascimento) values (12, 'Marcela', '05/08/1969');
 insert into cliente (codigo, nome, data_nascimento) values (13, 'Antonieta', '05/05/1988');
 insert into cliente (codigo, nome, data_nascimento) values (14, 'Joana', '10/08/1995');
+
 
 
 -- SELECT
@@ -158,6 +163,7 @@ where cliente.nome like '%an%';
 */
 
 
+
 -- UPDATE
 update produtos
 set produtos.valor = 5.56
@@ -173,6 +179,7 @@ produtos.valor = 12.87
 where produtos.codigo = 5;
 
 
+
 -- DELETE
 delete from cliente
 where cliente.nome like '%an%';
@@ -181,6 +188,7 @@ delete from cliente
 where data_nascimento >= '01/01/1999';
 
 delete from produtos;
+
 
 
 -- ORDER BY
@@ -201,6 +209,7 @@ select * from produtos
 order by produtos.valor asc; -- ordena o valor de maneira crescente (< para o >)
 
 
+
 -- FIRST
 select first 3 * from produtos
 order by produtos.valor desc; -- seleciona os 3 produtos mais caros
@@ -211,9 +220,22 @@ order by produtos.valor asc; -- seleciona os 3 produtos mais baratos
 select first 5 nome from cliente order by nome; -- seleciona os 5 primeiros registros em ordem alfabetica
 
 
+
 -- IN
 select * from cliente
 where codigo in(1,8,11);
 
 select * from produtos
 where produtos.descricao in('picanha', 'cenoura', 'alcatra');
+
+
+
+-- BETWEEN
+select * from cliente
+where cliente.data_nascimento between '08-03-1975' and '01-01-1980'; -- seleciona os registos entre as datas
+
+select * from produtos
+where produtos.valor between 5.0 and 10.0; -- seleciona os registros entre os valores
+
+select * from cliente
+where cliente.nome not between 'A' and 'G';
