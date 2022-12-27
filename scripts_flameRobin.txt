@@ -209,3 +209,11 @@ select first 3 * from produtos
 order by produtos.valor asc; -- seleciona os 3 produtos mais baratos
 
 select first 5 nome from cliente order by nome; -- seleciona os 5 primeiros registros em ordem alfabetica
+
+
+-- IN
+select * from cliente
+where codigo in(1,8,11);
+
+select * from produtos
+where produtos.descricao in('picanha', 'cenoura', 'alcatra');
