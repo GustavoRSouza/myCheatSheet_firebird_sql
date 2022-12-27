@@ -239,3 +239,32 @@ where produtos.valor between 5.0 and 10.0; -- seleciona os registros entre os va
 
 select * from cliente
 where cliente.nome not between 'A' and 'G';
+
+
+-- GENERATOR
+create generator inc_produto;
+set generator inc_produto to 9; -- vai auto incrementar conforme a trigger produtos_bi for executada na criação de um novo produto
+
+
+-- TRIGGER
+set term ^;
+create trigger produtos_bi /* bi significa que o gatilho vai ser before insert */ for produtos 
+active before insert position 0
+as
+begin
+	-- coloco o que a trigger vai executar aqui
+	new.codigo = gen_id(inc_produto,1); -- = 9 + 1
+
+end^
+
+set term;^
+
+insert into produtos (
+	descricao, 
+	valor, 
+	cod_grupo_produtos
+) values (
+	'fraldinha'
+	,22.80,
+	2
+); -- testando a trigger
