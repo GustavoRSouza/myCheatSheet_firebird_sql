@@ -199,3 +199,13 @@ order by produtos.valor desc; -- ordena o valor de maneira decrescente (> para o
 
 select * from produtos
 order by produtos.valor asc; -- ordena o valor de maneira crescente (< para o >)
+
+
+-- FIRST
+select first 3 * from produtos
+order by produtos.valor desc; -- seleciona os 3 produtos mais caros
+
+select first 3 * from produtos
+order by produtos.valor asc; -- seleciona os 3 produtos mais baratos
+
+select first 5 nome from cliente order by nome; -- seleciona os 5 primeiros registros em ordem alfabetica
