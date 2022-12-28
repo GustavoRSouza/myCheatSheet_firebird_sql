@@ -347,4 +347,26 @@ inner join grupo_produtos on grupo_produtos.codigo = produtos.cod_grupo_produtos
 
 
 
+-- ALIAS
+select 
+	c.codigo, 
+	c.nome, 
+	c.data_nascimento
+from cliente c;
+
+select 
+	p.codigo, 
+	p.descricao
+from produtos p;
+
+select 
+	p.codigo as cod_produto, 
+	p.descricao as produto, 
+	gp.codigo as cod_grupo_produtos, 
+	gp.descricao as grupo_produto
+from produtos p, grupo_produtos gp
+where p.cod_grupo_produtos = gp.codigo;
+
+
+
 
