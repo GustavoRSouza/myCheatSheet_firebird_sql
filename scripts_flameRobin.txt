@@ -44,6 +44,13 @@ create table item_pedido(
 	quantidade integer
 );
 
+create table fornecedor(
+	codigo int,
+	nome varchar(50),
+	data_fundacao varchar(11)
+);
+
+
 
 
 -- PRIMARY KEYS
@@ -115,6 +122,11 @@ insert into cliente (codigo, nome, data_nascimento) values (12, 'Marcela', '05/0
 insert into cliente (codigo, nome, data_nascimento) values (13, 'Antonieta', '05/05/1988');
 insert into cliente (codigo, nome, data_nascimento) values (14, 'Joana', '10/08/1995');
 insert into cliente (codigo, nome, data_nascimento) values (15, 'Junior', '10/10/1998');
+
+insert into fornecedor values (1, 'SORVETERIA', '05-20-1999');
+insert into fornecedor values (2, 'SUPERMERCADO', '10-29-2000');
+insert into fornecedor values (3, 'PANIFICADORA', '12-25-2000');
+insert into fornecedor values (4, 'DROGARIA', '11-15-2001');
 
 
 
@@ -367,6 +379,33 @@ select
 from produtos p, grupo_produtos gp
 where p.cod_grupo_produtos = gp.codigo;
 
+
+
+
+-- UNION
+select 
+	codigo, 
+	nome, 
+	data, 
+	tipo
+from (
+	select 
+		c.codigo as codigo, 
+		c.nome as nome, 
+		c.data_nascimento as data, 
+		'cliente' as tipo
+	from cliente c
+
+	union 
+
+	select 
+		f.codigo as codigo, 
+		f.nome as nome, 
+		f.data_fundacao as data, 
+		'fornecedor' as tipo
+	from fornecedor f
+)
+order by nome;
 
 
 
