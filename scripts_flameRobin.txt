@@ -331,5 +331,20 @@ where produtos.codigo = 3; -- será apagado
 
 
 
+-- JOIN
+select * from produtos
+join grupo_produtos on grupo_produtos.codigo = produtos.cod_grupo_produtos;
+
+select * from produtos
+left join grupo_produtos on grupo_produtos.codigo = produtos.cod_grupo_produtos;
+
+select * from produtos
+right join grupo_produtos on grupo_produtos.codigo = produtos.cod_grupo_produtos;
+
+select * from produtos
+inner join grupo_produtos on grupo_produtos.codigo = produtos.cod_grupo_produtos;
+
+
+
 
 
