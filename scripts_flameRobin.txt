@@ -409,3 +409,33 @@ order by nome;
 
 
 
+-- EXTRACT
+select * from cliente c
+where extract (month from c.data_nascimento) between 3 and 6;
+
+select * from cliente c
+where extract (month from c.data_nascimento) = 5
+and extract (day from c.data_nascimento) = 5;
+
+select c.nome as nome, c.data_nascimento as data_nasc,
+(
+extract (year from current_date) - extract (year from c.data_nascimento)
+) as idade
+from cliente c
+order by data_nasc desc; -- calcular idade com base no ano atual e o ano de nascimento
+
+/*
+------------------------
+FILTROS PARA O EXTRACT
+------------------------
+year = 1 a 9999 integer
+month = 1 a 12 integer
+week = 1 a 53 integer
+day = 1 a 31 integer
+weekday = 0 a 6 (0 = domingo) integer
+yearday = 0 a 365 (0 = 1 de janeiro) integer
+hour = 0 a 23 integer
+minute = 0 a 59 integer
+second = 0.0000 a 59.9999 numeric(9,4)
+millisecond = 0.0 a 999.9 numeric(9,1)
+*/
