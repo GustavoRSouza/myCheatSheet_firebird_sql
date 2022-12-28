@@ -20,6 +20,10 @@ create table produtos(
     cod_grupo_produtos integer
 );
 
+-- criar a coluna estoque em produtos
+alter table produtos add estoque integer;
+
+
 create table cliente(
 	codigo DM_CODIGO,
 	nome DM_NOME,
@@ -110,6 +114,8 @@ insert into cliente (codigo, nome, data_nascimento) values (11, 'Alex', '03/03/1
 insert into cliente (codigo, nome, data_nascimento) values (12, 'Marcela', '05/08/1969');
 insert into cliente (codigo, nome, data_nascimento) values (13, 'Antonieta', '05/05/1988');
 insert into cliente (codigo, nome, data_nascimento) values (14, 'Joana', '10/08/1995');
+insert into cliente (codigo, nome, data_nascimento) values (15, 'Junior', '10/10/1998');
+
 
 
 
@@ -177,6 +183,13 @@ update produtos
 set produtos.descricao = 'frango resfriado',
 produtos.valor = 12.87
 where produtos.codigo = 5;
+
+update produtos set estoque = 10
+where produtos.codigo <> 3;
+
+update produtos set estoque = 0
+where produtos.codigo = 3;
+
 
 
 
@@ -264,7 +277,59 @@ insert into produtos (
 	valor, 
 	cod_grupo_produtos
 ) values (
-	'fraldinha'
-	,22.80,
+	'fraldinha',
+	22.80,
 	2
 ); -- testando a trigger
+
+
+
+
+-- EXCEPTION
+create exception exc_cliente_padrao 'cliente padrão não pode ser excluido';
+
+-- cria a trigger que executa a exception
+set term ^ ;
+create trigger trg__exc_cliente_bd for cliente 
+active before delete position 0
+as
+begin
+	if(old.codigo = 15) then
+	exception exc_cliente_padrao; -- -- chama a exception
+end
+end
+^
+set term ; ^
+
+-- testando a exception tentando excluir o cliente do codigo 15
+delete from cliente
+where cliente.codigo = 15;
+
+----------------------------------------------------------------------------------
+
+create exception exc_produto_estoque 'produto em estoque, impossivel excluir';
+
+set term ^;
+create trigger trg_exc_produto_estoque_bd for produtos
+active before delete position 0
+as
+begin
+	if(old.estoque > 0) then
+	exception exc_produto_estoque; -- chama a exception
+end
+^
+set term ; ^
+
+-- testando a exception
+delete from produtos
+where produtos.codigo = 2; -- não será apagado
+
+
+delete from produtos
+where produtos.codigo = 3; -- será apagado
+
+
+
+
+
+
