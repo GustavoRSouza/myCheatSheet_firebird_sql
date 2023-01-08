@@ -439,3 +439,29 @@ minute = 0 a 59 integer
 second = 0.0000 a 59.9999 numeric(9,4)
 millisecond = 0.0 a 999.9 numeric(9,1)
 */
+
+
+
+-- SUM
+select sum(p.valor) from produtos p;
+
+select sum(p.valor) from produtos p
+where p.cod_grupo_produtos = 3;
+
+select grupo_produtos.descricao as grupo, sum(produtos.valor) as total from PRODUTOS
+inner join grupo_produtos
+on produtos.cod_grupo_produtos = grupo_produtos.codigo
+group by grupo
+order by total;
+
+select grupo_produtos.descricao as grupo, sum(produtos.valor) as total from PRODUTOS
+inner join grupo_produtos
+on produtos.cod_grupo_produtos = grupo_produtos.codigo
+where produtos.cod_grupo_produtos = 3
+group by grupo;
+
+select gp.descricao as grupo, sum(p.valor) as total
+from produtos p, grupo_produtos gp
+where gp.codigo = p.cod_grupo_produtos
+group by grupo
+order by total;
