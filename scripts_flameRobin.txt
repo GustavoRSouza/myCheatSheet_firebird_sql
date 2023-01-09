@@ -465,3 +465,24 @@ from produtos p, grupo_produtos gp
 where gp.codigo = p.cod_grupo_produtos
 group by grupo
 order by total;
+
+
+
+-- AVG
+select avg(p.VALOR)
+from PRODUTOS p;
+
+select 
+    ip.COD_PRODUTO as cod, 
+    p.DESCRICAO as produto,
+    sum(ip.QUANTIDADE) as qtd, 
+    avg(p.VALOR) as media, 
+    (sum(ip.QUANTIDADE) * avg(p.VALOR)) as total
+from 
+    PRODUTOS p, 
+    ITEM_PEDIDO ip
+where 
+    p.CODIGO = ip.COD_PRODUTO
+group by 
+    ip.COD_PRODUTO, 
+    p.DESCRICAO;
