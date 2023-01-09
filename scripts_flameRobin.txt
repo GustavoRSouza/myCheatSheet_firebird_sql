@@ -560,3 +560,9 @@ execute procedure editaProduto('I',10,'Batata',12.50,3);-- INCLUIR REGISTRO
 execute procedure editaProduto('A',10,'Batata Roxa',15.45,3);-- ALTERAR REGISTR
 execute procedure editaProduto('E',10,'Batata Roxa',15.45,3);-- EXCLUIR REGISTR
 -----------------------------------------
+
+
+
+-- DISTINCT
+select distinct cod_grupo_produtos 
+from produtos;
