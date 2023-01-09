@@ -486,3 +486,77 @@ where
 group by 
     ip.COD_PRODUTO, 
     p.DESCRICAO;
+
+
+
+-- PROCEDURES
+-----------------------------------------
+set term ^;
+create procedure somaValor
+(nValor1 integer, nValor2 integer)
+returns
+    (nTotal integer)
+    as
+begin
+    nTotal = nValor1 + nValor2;
+end^
+
+set term ; ^
+-----------------------------------------
+execute procedure somaValor(10,20);
+-----------------------------------------
+
+set term ^;
+create procedure atualizaValor
+(nCodigo integer, nPercentual integer)
+    as
+begin
+	update produtos
+	set produtos.valor = produtos.valor + ((produtos.valor * :nPercentual)/100)
+	where produtos.codigo = :nCodigo;
+end^
+
+set term ; ^
+-----------------------------------------
+execute procedure atualizaValor(8,50);
+-----------------------------------------
+
+
+set term ^;
+create procedure editaProduto(
+	cTipo varchar(1),
+	nCodigo integer, 
+	cDescricao varchar(20),
+	nValor numeric(6,2),
+	nGrupo_produtos integer
+)
+as
+begin
+	if(cTipo = 'I') then
+		insert into produtos
+			(produtos.codigo, 
+			produtos.descricao, 
+			produtos.cod_grupo_produtos, 
+			produtos.valor)
+		values
+			(:nCodigo, :cDescricao, :nGrupo_produtos, :nValor);
+	else
+		if(cTipo = 'A') then
+			update produtos
+			set 
+				produtos.descricao = :cDescricao,
+				produtos.cod_grupo_produtos = :nGrupo_produtos,
+				produtos.valor = :nValor	
+			where produtos.codigo = :nCodigo;
+	else
+		if(cTipo = 'E') then
+			delete from produtos
+			where produtos.codigo = :nCodigo;
+end^
+
+set term ; ^
+-----------------------------------------
+execute procedure editaProduto('I',10,'Batata',12.50,3);-- INCLUIR REGISTRO
+execute procedure editaProduto('A',10,'Batata Roxa',15.45,3);-- ALTERAR REGISTR
+execute procedure editaProduto('E',10,'Batata Roxa',15.45,3);-- EXCLUIR REGISTR
+-----------------------------------------
