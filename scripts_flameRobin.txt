@@ -566,3 +566,8 @@ execute procedure editaProduto('E',10,'Batata Roxa',15.45,3);-- EXCLUIR REGISTR
 -- DISTINCT
 select distinct cod_grupo_produtos 
 from produtos;
+
+
+-- MAX & MIN
+select max(valor) from produtos;
+select min(valor) from produtos;
