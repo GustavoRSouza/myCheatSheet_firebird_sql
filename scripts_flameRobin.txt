@@ -571,3 +571,12 @@ from produtos;
 -- MAX & MIN
 select max(valor) from produtos;
 select min(valor) from produtos;
+
+
+
+-- UPPER & LOWER
+select NOME from CLIENTE
+where upper(NOME) like '%JU%';
+
+select NOME from CLIENTE
+where lower(NOME) like '%gu%';
