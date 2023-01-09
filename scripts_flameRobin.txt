@@ -590,3 +590,36 @@ from CLIENTE;
 select gp.descricao || ' -> ' || p.descricao || ' = ' || p.valor
 from GRUPO_PRODUTOS gp, PRODUTOS p
 where gp.CODIGO = p.COD_GRUPO_PRODUTOS;
+
+
+
+-- HAVING
+select 
+    count(PRODUTOS.CODIGO) as qtd_prod, 
+    GRUPO_PRODUTOS.DESCRICAO as grupo_prod
+from 
+    PRODUTOS, GRUPO_PRODUTOS
+where 
+    GRUPO_PRODUTOS.CODIGO = PRODUTOS.COD_GRUPO_PRODUTOS
+group by 
+    grupo_prod
+having count
+    (PRODUTOS.CODIGO) >= 3;
+
+
+select 
+    ip.COD_PRODUTO as cod, 
+    p.DESCRICAO as produto,
+    sum(ip.QUANTIDADE) as qtd, 
+    avg(p.VALOR) as media, 
+    (sum(ip.QUANTIDADE) * avg(p.VALOR)) as total
+from 
+    PRODUTOS p, 
+    ITEM_PEDIDO ip
+where 
+    p.CODIGO = ip.COD_PRODUTO
+group by 
+    ip.COD_PRODUTO, 
+    p.DESCRICAO
+having
+    sum(ip.QUANTIDADE) >= 20;
