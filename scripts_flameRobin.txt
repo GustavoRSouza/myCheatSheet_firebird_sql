@@ -580,3 +580,13 @@ where upper(NOME) like '%JU%';
 
 select NOME from CLIENTE
 where lower(NOME) like '%gu%';
+
+
+
+-- CONCATENAR
+select NOME || ' - ' || data_nascimento 
+from CLIENTE; 
+
+select gp.descricao || ' -> ' || p.descricao || ' = ' || p.valor
+from GRUPO_PRODUTOS gp, PRODUTOS p
+where gp.CODIGO = p.COD_GRUPO_PRODUTOS;
